@@ -7,12 +7,13 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 
-export interface AppState {
+import { routerReducer } from '@ngrx/router-store';
 
+export interface AppState {
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-
+  'router': routerReducer
 };
 
 
