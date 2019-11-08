@@ -6,7 +6,9 @@ import { Store } from "@ngrx/store";
 import { tap, first, finalize } from "rxjs/operators";
 import { loadAllCourse } from "./courses.actions";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class CoursesResolver implements Resolve<any> {
     isLoading: boolean;
 
@@ -18,7 +20,7 @@ export class CoursesResolver implements Resolve<any> {
       return this.store.pipe(
           tap(() => {
               this.isLoading = true;
-              this.store.dispatch(loadAllCourse);
+              this.store.dispatch(loadAllCourse());
           }),
           first(),
           finalize(() => this.isLoading = false)
